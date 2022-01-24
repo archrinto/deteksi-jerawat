@@ -1,1 +1,1 @@
-# deteksi-jerawat
+## Aplikasi web deteksi jerawat
