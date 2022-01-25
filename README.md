@@ -3,7 +3,7 @@ Berikut ini adalah source code dan dataset aplikasi pendeteksian jerawat yang di
 Pada source code ini terdiri dari backend (web service) dan frontend (antarmuka). Code backend menggunakan bahasa pemograman Python dan Framework Flask sedangkan untuk frontend menggunakan framework JavaScript Vue.js.
 
 ### Model 
-Model pendeteksian menggunakan model deep learning SSD ResNet50 FPN 640x640 yang dilatih menggunakan dataset jerawat. Model ini adalah model TensorFlow untuk deteksi objek.
+Model pendeteksian menggunakan model deep learning SSD ResNet50 FPN 640x640 yang dilatih menggunakan dataset jerawat. Model ini adalah model TensorFlow untuk deteksi objek. [Download Model](https://drive.google.com/file/d/1QCfnwMcGW6z8-NzbRKCvkkkp5SoviXok/view?usp=sharing)
 
 Model dijalankan menggunakan TensorFlow Serving ([Cara Install TensorFlow Serving](https://www.tensorflow.org/tfx/serving/setup)) . Kemudian model dijalankan menggunakan perintah seperti berikut pada terminal.
 
