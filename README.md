@@ -42,6 +42,35 @@ Jalankan Web Api dengan perintah berikut:
 python app.py run
 ```
 
+#### API DOC
+- `POST` `http://localhost:5000/deteksi_jerawat` 
+    
+    Request body:
+
+    `multipart/form-data` File array `file[]`
+    
+    Respont body:    
+    ```
+    [
+       {
+           "deteksi_objek": {
+               "jerawat": [
+                   {
+                      "h": 0.05, // tinggi objek 
+                      "w": 0.06, // lebar objek
+                      "x": 0.7, // koorditat x top left corner 
+                      "y": 0.48, // koordinat y top left corner 
+                      "score": 0.6 // nilai probabilitas
+                   }
+                   ...
+               ]
+           }
+       }
+       ...   
+    ]
+    ```
+    nilai koordinat objek merupakan skala dari ukuran gambar
+
 ### Aplikasi Web (frontend)
 Sebelum menjalankan frontend pastikan bahwa `node.js` sudah tersinstall pada sistem operasi, untuk menginstall library yang digunakan menggunakan `npm` dan untuk menjalankan aplikasi (development).
 
