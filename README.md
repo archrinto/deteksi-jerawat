@@ -49,7 +49,7 @@ python app.py run
 
     `multipart/form-data` File array `file[]`
     
-    Respont body:    
+    Response body:    
     ```
     [
        {
