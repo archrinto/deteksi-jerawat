@@ -707,7 +707,7 @@
             "content-type": "multipart/form-data"
           }
         }
-        await this.$axios.post('/api/deteksi_jerawat', formData, config)
+        await this.$axios.post('/api/deteksi_bintik_hitam', formData, config)
         .then(res => {
           this.results = res.data
         })
@@ -750,8 +750,8 @@
 
         let items = []
         this.jumlahTerdeteksi = 0
-        if (this.currentResult != null && this.currentResult.deteksi_objek.jerawat) {
-          items = this.currentResult.deteksi_objek.jerawat
+        if (this.currentResult != null && this.currentResult.deteksi_objek.bintik_hitam) {
+          items = this.currentResult.deteksi_objek.bintik_hitam
           this.jumlahTerdeteksi = items.length
         }
         
