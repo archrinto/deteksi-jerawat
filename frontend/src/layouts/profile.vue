@@ -80,6 +80,9 @@
               <v-list-item to="/bintik-hitam" link>
                 <v-list-item-title>Bintik Hitam</v-list-item-title>
               </v-list-item>
+              <v-list-item to="/kemerahan" link>
+                <v-list-item-title>Kemerahan</v-list-item-title>
+              </v-list-item>
           </v-list-group>
 
           <v-list-item to="/debugging" link>

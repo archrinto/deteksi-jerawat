@@ -7,6 +7,7 @@ from flask import Flask, request, jsonify, send_from_directory, abort, make_resp
 
 from deteksi_jerawat import deteksi_jerawat
 from deteksi_bintik_hitam import deteksi_bintik_hitam
+from deteksi_kemerahan import deteksi_kemerahan
 
 ### CONFIG ###
 BASEDIR = os.path.dirname(os.path.realpath(__file__))
@@ -84,6 +85,30 @@ def deteksi_bintik_hitam_handler():
             continue
         
         normalisasi = deteksi_bintik_hitam(app, image_processor, image)
+
+        result = {
+            'deteksi_objek': normalisasi
+        }
+        results.append(result)
+
+    # print(results)
+
+    return jsonify(results)
+
+@app.route('/deteksi_kemerahan', methods=['POST'])
+def deteksi_kemerahan_handler():
+    # menerima upload files
+    images = upload()
+
+    results = []
+
+    for index, image in enumerate(images):
+        if image is None or len(image) == 0:
+            result = None
+            results.append(result)
+            continue
+        
+        normalisasi = deteksi_kemerahan(app, image_processor, image)
 
         result = {
             'deteksi_objek': normalisasi

@@ -83,8 +83,22 @@ def show_image(title, image):
   cv2.imshow(title, image)
   cv2.waitKey(0)
 
+def imfill(image):
+  h, w = image.shape[:2]
 
+  # menambahkan border dgn nilai 0 pada gambar, jika tidak imflood gagal
+  im_floodfill = np.zeros((h+2, w+2), np.uint8)
+  im_floodfill[1:h+1, 1:w+1] = image.copy()
 
+  mask = np.zeros((h+4, w+4), np.uint8)
+  cv2.floodFill(im_floodfill, mask, (0,0), 255)
+  im_floodfill_inv = cv2.bitwise_not(im_floodfill)
+
+  # menghapus border pada hasil. mengembalikan ke ukuran semula
+  mask = np.zeros((h, w), np.uint8)
+  mask = im_floodfill_inv[1:h+1, 1:w+1].copy()
+
+  return image | mask
 
 
 
