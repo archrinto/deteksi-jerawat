@@ -108,7 +108,7 @@ def deteksi_kemerahan_handler():
             results.append(result)
             continue
         
-        normalisasi = deteksi_kemerahan(app, image_processor, image)
+        normalisasi = deteksi_kemerahan(app.config['UPLOAD_FOLDER'], image_processor, image)
 
         result = {
             'deteksi_objek': normalisasi

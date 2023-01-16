@@ -793,8 +793,8 @@
             context.strokeStyle = "yellow"
 
             context.beginPath();
-            // context.strokeRect(left, top, right-left, bottom-top);
-            context.arc(left + box_w / 2, top + box_h / 2, radius, 0, 2 * Math.PI);
+            context.strokeRect(left, top, right-left, bottom-top);
+            // context.arc(left + box_w / 2, top + box_h / 2, radius, 0, 2 * Math.PI);
             context.stroke();
           });
         }
