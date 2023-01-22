@@ -56,10 +56,88 @@ python app.py run
            "deteksi_objek": {
                "jerawat": [
                    {
-                      "h": 0.05, // tinggi objek 
-                      "w": 0.06, // lebar objek
-                      "x": 0.7, // koorditat x top left corner 
-                      "y": 0.48, // koordinat y top left corner 
+                      "ymin": 0.05, // koorditat y top left corner 
+                      "ymax": 0.06, // koorditat y bottom right corner
+                      "xmin": 0.05, // koorditat x top left corner 
+                      "xmax": 0.06, // koorditat x bottom right corner
+                      "score": 0.6 // nilai probabilitas
+                   }
+                   ...
+               ]
+           }
+       }
+       ...   
+    ]
+    ```
+ - `POST` `http://localhost:5000/deteksi_kemerahan` 
+    
+    Request body:
+
+    `multipart/form-data` File array `file[]`
+    
+    Response body:    
+    ```
+    [
+       {
+           "deteksi_objek": {
+               "kemerahan": [
+                   {
+                      "ymin": 0.05, // koorditat y top left corner 
+                      "ymax": 0.06, // koorditat y bottom right corner
+                      "xmin": 0.05, // koorditat x top left corner 
+                      "xmax": 0.06, // koorditat x bottom right corner
+                      "score": 0.6 // nilai probabilitas
+                   }
+                   ...
+               ]
+           }
+       }
+       ...   
+    ]
+    ```
+- `POST` `http://localhost:5000/deteksi_bintik_hitam` 
+    
+    Request body:
+
+    `multipart/form-data` File array `file[]`
+    
+    Response body:    
+    ```
+    [
+       {
+           "deteksi_objek": {
+               "bintik_hitam": [
+                   {
+                      "ymin": 0.05, // koorditat y top left corner 
+                      "ymax": 0.06, // koorditat y bottom right corner
+                      "xmin": 0.05, // koorditat x top left corner 
+                      "xmax": 0.06, // koorditat x bottom right corner
+                      "score": 0.6 // nilai probabilitas
+                   }
+                   ...
+               ]
+           }
+       }
+       ...   
+    ]
+    ```
+- `POST` `http://localhost:5000/deteksi_keriput` 
+    
+    Request body:
+
+    `multipart/form-data` File array `file[]`
+    
+    Response body:    
+    ```
+    [
+       {
+           "deteksi_objek": {
+               "keriput": [
+                   {
+                      "ymin": 0.05, // koorditat y top left corner 
+                      "ymax": 0.06, // koorditat y bottom right corner
+                      "xmin": 0.05, // koorditat x top left corner 
+                      "xmax": 0.06, // koorditat x bottom right corner
                       "score": 0.6 // nilai probabilitas
                    }
                    ...
