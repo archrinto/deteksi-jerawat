@@ -101,9 +101,9 @@ def deteksi_keriput(image):
 
     # deteksi canny edge
     image_gray_edge = cv2.Canny(cv2.GaussianBlur(gray_segmented,(5,5),0), 55, 18)
-    sobelx = cv2.Sobel(src=gray_segmented, ddepth=cv2.CV_64F, dx=1, dy=0, ksize=5) # Sobel Edge Detection on the X axis
+    # sobelx = cv2.Sobel(src=gray_segmented, ddepth=cv2.CV_64F, dx=1, dy=0, ksize=5) # Sobel Edge Detection on the X axis
     sobely = cv2.Sobel(src=cv2.GaussianBlur(gray_segmented,(3,3),1), ddepth=-1, dx=0, dy=1, ksize=5) # Sobel Edge Detection on the Y axis
-    sobelxy = cv2.Sobel(src=gray_segmented, ddepth=cv2.CV_64F, dx=1, dy=1, ksize=5)
+    # sobelxy = cv2.Sobel(src=gray_segmented, ddepth=cv2.CV_64F, dx=1, dy=1, ksize=5)
 
     sobely[sobely < 150] = 0
 
@@ -119,17 +119,38 @@ def deteksi_keriput(image):
     for cnt in contours_valid:
         cv2.drawContours(sobelyarea, [cnt], 0, 255, -1)
 
-    image_hasil = image.copy()
+    # seleksi contour di dalam area
+    mask = np.zeros_like(image_gray_edge)
     for i, area in enumerate(areas):
-        mask = np.zeros_like(image_gray_edge)
         r1, r2 = area[0]
         c1, c2 = area[1]
-    
+
         mask[r1:r2, c1:c2] = sobelyarea[r1:r2, c1:c2]
 
-        image_hasil[mask > 0] = [255, 0, 0]
+    image_hasil = image.copy()
+    normalisasi = {
+        'keriput': []
+    }
+    contours_hasil, _ = cv2.findContours(mask.copy(), mode=cv2.RETR_TREE, method=cv2.CHAIN_APPROX_NONE)
+    height, width = image.shape[0:2]
+
+    for cnt in contours_hasil:
+        cv2.drawContours(image_hasil, [cnt], 0, 100, -1)
+        x,y,w,h = cv2.boundingRect(cnt)
+        norm = {
+            'xmin': x / width,
+            'ymin': y / height,
+            'ymax': (y + h) / height,
+            'xmax': (x + w) / width,
+            'score': 100.0
+        } 
+
+        normalisasi['keriput'].append(norm)
 
     cv2.imwrite('hasil_keriput.jpg', image_hasil)
+    # cv2.imwrite(os.path.join(app.config['UPLOAD_FOLDER'], uuid.uuid4().hex + '.jpeg'), image_hasil)
+
+    return normalisasi
 
 
 if __name__ == '__main__': 

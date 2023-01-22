@@ -68,13 +68,13 @@ def deteksi_bintik_hitam(app, image_processor, image):
 
 
     cnt_green_mean = np.mean(np.array(contours_green_mean))
-    cnt_red_mean = np.mean(np.array(contours_red_mean))
-    cnt_blue_mean = np.mean(np.array(contours_blue_mean))
+    # cnt_red_mean = np.mean(np.array(contours_red_mean))
+    # cnt_blue_mean = np.mean(np.array(contours_blue_mean))
     cnt_hue_mean = np.mean(np.array(contours_hue_mean))
 
     cnt_green_std = np.std(contours_green_mean)
-    cnt_red_std = np.std(contours_red_mean)
-    cnt_hue_std = np.std(contours_hue_mean)
+    # cnt_red_std = np.std(contours_red_mean)
+    # cnt_hue_std = np.std(contours_hue_mean)
 
     # filter contour berdasarkan nilai intensitas warna
     color_condition_1 = np.array(contours_green_mean) > (cnt_green_mean - cnt_green_std)
