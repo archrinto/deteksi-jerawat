@@ -137,11 +137,17 @@ def deteksi_keriput(image):
     for cnt in contours_hasil:
         cv2.drawContours(image_hasil, [cnt], 0, 100, -1)
         x,y,w,h = cv2.boundingRect(cnt)
+        points = np.reshape(cnt, (len(cnt), 2))
+        points = points.astype(float)
+        points[:,0] = points[:,0] / width
+        points[:,1] = points[:,1] / height
+        points = points.tolist()
         norm = {
             'xmin': x / width,
             'ymin': y / height,
             'ymax': (y + h) / height,
             'xmax': (x + w) / width,
+            'points': points,
             'score': 100.0
         } 
 
