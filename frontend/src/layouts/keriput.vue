@@ -794,11 +794,18 @@
             // let radius = Math.sqrt((box_h) ** 2 + (box_w) ** 2) / 2
             
             context.strokeStyle = "yellow"
+            context.fillStyle = "yellow"
+            console.log(items.points)
+            if (item?.points) {
+              item.points.forEach(p => {
+                  context.fillRect(p[0] * width, p[1] * height,1, 1);
+              })
+            }
 
-            context.beginPath();
-            context.strokeRect(left, top, right-left, bottom-top);
-            // context.arc(left + box_w / 2, top + box_h / 2, radius, 0, 2 * Math.PI);
-            context.stroke();
+            // context.beginPath();
+            // context.strokeRect(left, top, right-left, bottom-top);
+            // // context.arc(left + box_w / 2, top + box_h / 2, radius, 0, 2 * Math.PI);
+            // context.stroke();
           });
         }
         image.src = this.imageList[this.selectedImageIndex]
