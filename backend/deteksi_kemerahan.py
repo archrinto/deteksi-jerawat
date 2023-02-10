@@ -181,11 +181,17 @@ def deteksi_kemerahan(save_folder, image_processor, image):
         cv2.drawContours(mask, [cnt], 0, 255, -1)
         # normalisasi koordinat
         x,y,w,h = cv2.boundingRect(cnt)
+        points = np.reshape(cnt, (len(cnt), 2))
+        points = points.astype(float)
+        points[:,0] = points[:,0] / width
+        points[:,1] = points[:,1] / height
+        points = points.tolist()
         norm = {
             'xmin': x / width,
             'ymin': y / height,
             'ymax': (y + h) / height,
             'xmax': (x + w) / width,
+            'points': points,
             'score': 100.0
         } 
         normalisasi['kemerahan'].append(norm)

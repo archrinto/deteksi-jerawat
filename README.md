@@ -85,7 +85,8 @@ python app.py run
                       "ymin": 0.05, // koorditat y top left corner 
                       "ymax": 0.06, // koorditat y bottom right corner
                       "xmin": 0.05, // koorditat x top left corner 
-                      "xmax": 0.06, // koorditat x bottom right corner
+                      "xmax": 0.06, // koorditat x bottom right corner,
+                      "points": [[0.1, 0.2], [0.3, 0.1], ...], // raw points 
                       "score": 0.6 // nilai probabilitas
                    }
                    ...
