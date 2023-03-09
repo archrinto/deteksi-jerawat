@@ -6,7 +6,7 @@ import requests
 
 
 BASEDIR = os.path.dirname(os.path.realpath(__file__))
-TF_ACNE_SERVING_URL = 'http://localhost:8501/v1/models/acne_model:predict'
+TF_ACNE_SERVING_URL = 'http://acne-model.herokuapp.com/v1/models/model:predict'
 FACIAL_LANDMARK_MODEL = os.path.join(BASEDIR, 'ai_model', 'shape_predictor_81_face_landmarks.dat')
 LABEL_MAP = {
     1: 'jerawat'
