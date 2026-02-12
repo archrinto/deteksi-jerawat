@@ -2,6 +2,12 @@
 Berikut ini adalah source code dan dataset aplikasi pendeteksian jerawat yang digunakan pada penelitian skin analyzer.
 Pada source code ini terdiri dari backend (web service) dan frontend (antarmuka). Code backend menggunakan bahasa pemograman Python dan Framework Flask sedangkan untuk frontend menggunakan framework JavaScript Vue.js.
 
+## 📸 Snapshots
+
+| Home Page | Result Analytic |
+|---|---|
+| ![Home Page](repo_src/home.png) | ![Result Analytic](repo_src/result-analytic.png) |
+
 ## 🚀 Docker Deployment (Recommended)
 
 Cara termudah dan tercepat untuk menjalankan aplikasi ini secara keseluruhan (Frontend, Backend, & AI Model) adalah menggunakan Docker.
