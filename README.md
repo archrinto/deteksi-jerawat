@@ -2,8 +2,45 @@
 Berikut ini adalah source code dan dataset aplikasi pendeteksian jerawat yang digunakan pada penelitian skin analyzer.
 Pada source code ini terdiri dari backend (web service) dan frontend (antarmuka). Code backend menggunakan bahasa pemograman Python dan Framework Flask sedangkan untuk frontend menggunakan framework JavaScript Vue.js.
 
+## 🚀 Docker Deployment (Recommended)
+
+Cara termudah dan tercepat untuk menjalankan aplikasi ini secara keseluruhan (Frontend, Backend, & AI Model) adalah menggunakan Docker.
+
+### Prasyarat
+- [Docker Desktop](https://www.docker.com/products/docker-desktop/) terinstall.
+- **(Opsional)** Akun [ngrok](https://ngrok.com/) jika ingin mengekspos aplikasi ke internet.
+
+### Cara Menjalankan
+1. **Setup Environment**:
+   Duplicate file `.env.example` menjadi `.env`:
+   ```bash
+   cp .env.example .env
+   ```
+   *(Opsional: Isi `NGROK_AUTHTOKEN` di dalam `.env` dengan token Anda).*
+
+2. **Setup Model**:
+   Pastikan file model TensorFlow Anda berada di folder:
+   `backend/ai_model/saved_model/1/`
+   *(Docker akan mencari folder `1` di dalam `saved_model` sebagai versi model).*
+
+3. **Jalankan Project**:
+   ```bash
+   docker-compose up --build
+   ```
+
+4. **Akses Aplikasi**:
+   - **Frontend (Web)**: [http://localhost:8080](http://localhost:8080)
+   - **Backend API**: [http://localhost:5050](http://localhost:5050)
+   - **ngrok Dashboard**: [http://localhost:4040](http://localhost:4040) (Untuk melihat URL publik Anda).
+
+---
+
+## 🛠 Manual Setup (Advanced)
+
+
+
 ### Model 
-Model pendeteksian menggunakan model deep learning SSD ResNet50 FPN 640x640 yang dilatih menggunakan dataset jerawat. Model ini adalah model TensorFlow untuk deteksi objek. [Download Model](https://drive.google.com/file/d/1QCfnwMcGW6z8-NzbRKCvkkkp5SoviXok/view?usp=sharing)
+Model pendeteksian menggunakan model deep learning SSD ResNet50 FPN 640x640 yang dilatih menggunakan dataset jerawat. Model ini adalah model TensorFlow untuk deteksi objek. [Download Model](https://drive.google.com/drive/folders/1XoZtuSPeCbqE_W4f_fnYeOEU3VadzFIL?usp=sharing)
 
 Model dijalankan menggunakan TensorFlow Serving ([Cara Install TensorFlow Serving](https://www.tensorflow.org/tfx/serving/setup)) . Kemudian model dijalankan menggunakan perintah seperti berikut pada terminal.
 
