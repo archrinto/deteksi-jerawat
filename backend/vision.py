@@ -6,7 +6,11 @@ import requests
 
 
 BASEDIR = os.path.dirname(os.path.realpath(__file__))
-TF_ACNE_SERVING_URL = 'http://acne-model.herokuapp.com/v1/models/model:predict'
+# TF_ACNE_SERVING_URL = 'http://acne-model.herokuapp.com/v1/models/model:predict'
+# TF_ACNE_SERVING_URL = 'http://localhost:8501/v1/models/acne_model:predict'
+TF_ACNE_SERVING_URL = 'http://skin-analyzer-model:8501/v1/models/acne_model:predict'
+
+
 FACIAL_LANDMARK_MODEL = os.path.join(BASEDIR, 'ai_model', 'shape_predictor_81_face_landmarks.dat')
 LABEL_MAP = {
     1: 'jerawat'
@@ -118,12 +122,12 @@ def deteksi_objek(image):
     payload = {"instances": img.tolist()}
 
     try:
-        res = requests.post(TF_ACNE_SERVING_URL, json=payload)    
+        res = requests.post(TF_ACNE_SERVING_URL, json=payload)
+        res.raise_for_status()
+        output_dict = res.json()["predictions"][0]
     except Exception as e:
-        print(e)
+        print(f"Error connecting to model server: {e}")
         return []
-
-    output_dict = res.json()["predictions"][0]
 
 
     classes = np.array(output_dict['detection_classes'], dtype="uint8")
