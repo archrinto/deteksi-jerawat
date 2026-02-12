@@ -13,6 +13,7 @@ from deteksi_keriput import deteksi_keriput
 ### CONFIG ###
 BASEDIR = os.path.dirname(os.path.realpath(__file__))
 UPLOAD_FOLDER = 'data_images'
+os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 ALLOWED_EXTENSION = {'png', 'jpg', 'jpeg'}
 
 
@@ -146,5 +147,5 @@ def deteksi_keriput_handler():
 
 
 if __name__ == '__main__':
-    port = int(os.environ.get('PORT', 5000))
+    port = int(os.environ.get('PORT', 5050))
     app.run(host="0.0.0.0", port=port)
